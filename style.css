@@ -24,6 +24,8 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  position: fixed;
+  top: 5rem;
 }
 
 h1 {
@@ -41,6 +43,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding-top: 4rem;
+  position: absolute;
+  right: 0rem;
 }
 
 .new {
@@ -52,10 +56,12 @@ h1 {
 .new i {
   position: absolute;
   color: #38a1ff;
-  right: 0rem;
-  font-size: 3.5rem;
+  right: .5rem;
+  font-size: 2.2rem;
   cursor: pointer;
 }
+
+
 
 input,
 li {
@@ -130,7 +136,7 @@ li {
   padding-right: 1.3rem;
 }
 
-.fa-check-square:hover {
+.fa-circle-check:hover {
   color: #1d9f75;
 }
 
