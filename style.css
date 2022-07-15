@@ -56,12 +56,10 @@ h1 {
 .new i {
   position: absolute;
   color: #38a1ff;
-  right: .5rem;
+  right: 0.5rem;
   font-size: 2.2rem;
   cursor: pointer;
 }
-
-
 
 input,
 li {
@@ -142,4 +140,13 @@ li {
 
 .fa-trash:hover {
   color: #dc3444;
+}
+
+.completed {
+  opacity: .5rem;
+  color: rgb(158, 158, 158);
+}
+
+.done {
+  text-decoration: line-through;
 }

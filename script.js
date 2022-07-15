@@ -4,6 +4,9 @@ const toDoListHolder = document.querySelector(".list-holder");
 const addButton = document.querySelector(".add-btn");
 addButton.addEventListener("click", add);
 
+const list = document.querySelector(".list-holder");
+list.addEventListener("click", checkRemove);
+
 function add() {
   const toDoList = document.createElement("div");
 
@@ -19,3 +22,16 @@ function add() {
   toDoInput.value = "";
 }
 
+function checkRemove(e) {
+  const classList = [...e.target.classList];
+  const item = e.target;
+  const todo = item.parentElement.parentElement; 
+  const todoText = item.parentElement;
+
+  if (classList[0] === "check-btn") {
+    todo.classList.toggle('completed')
+    todoText.classList.toggle('done')
+  } else if (classList[0] === "remove-btn") {
+    todo.remove();
+  }
+}
