@@ -25,13 +25,12 @@ function add() {
 function checkRemove(e) {
   const classList = [...e.target.classList];
   const item = e.target;
-  const todo = item.parentElement.parentElement; 
-  const todoText = item.parentElement;
-
+  const todo = item.parentElement;
+  
   if (classList[0] === "check-btn") {
-    todo.classList.toggle('completed')
-    todoText.classList.toggle('done')
+    todo.classList.toggle("completed");
   } else if (classList[0] === "remove-btn") {
     todo.remove();
   }
 }
+

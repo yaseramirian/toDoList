@@ -147,6 +147,7 @@ li {
   color: rgb(158, 158, 158);
 }
 
-.done {
+.completed li {
   text-decoration: line-through;
 }
+
