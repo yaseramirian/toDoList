@@ -70,7 +70,7 @@ li {
   display: flex;
   align-items: center;
   background-color: white;
-  padding-left: 1rem;
+  padding: 0 3rem 0 1rem;
 }
 
 input {
@@ -127,7 +127,6 @@ li {
   border-radius: 0;
   cursor: default;
   font-size: 1rem;
-  overflow: auto;
 }
 
 .list i {
@@ -176,7 +175,7 @@ li {
   }
 
   .left-side img {
-    height: 20rem;
+    height: 50%;
   }
 
   .right-side {
@@ -200,7 +199,7 @@ li {
   }
 
   .left-side img {
-    height: 25rem;
+    height: 70%;
   }
 
   .right-side {
