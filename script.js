@@ -6,6 +6,9 @@ toDoListHolder.addEventListener("click", checkRemove);
 const addButton = document.querySelector(".add-btn");
 addButton.addEventListener("click", add);
 
+const clearButton = document.querySelector(".clear-btn");
+clearButton.addEventListener("click", clear);
+
 document.addEventListener("DOMContentLoaded", getLocalTodos);
 
 function add() {
@@ -49,8 +52,6 @@ function getLocalTodos(todo) {
     ? JSON.parse(localStorage.getItem("todos"))
     : [];
 
-
-
   savedTodos.forEach((todo) => {
     const toDoList = document.createElement("div");
     const newToDo = `
@@ -74,4 +75,9 @@ function removeLocalTodos(todo) {
     (t) => t !== todo.children[0].innerText
   );
   localStorage.setItem("todos", JSON.stringify(filteredTodos));
+}
+
+function clear() {
+  toDoListHolder.remove();
+  localStorage.clear();
 }
