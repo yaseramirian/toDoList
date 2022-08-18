@@ -91,12 +91,12 @@ input:focus {
   margin-top: 1rem;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
 button {
-  width: 22%;
+  width: 25%;
   height: 2.5rem;
   border: none;
   border-radius: 0.3rem;
@@ -104,6 +104,33 @@ button {
   color: #38a1ff;
   font-size: 0.9rem;
   cursor: pointer;
+}
+
+button i {
+  margin-left: 0.3rem;
+}
+
+.select {
+  width: 25%;
+  margin-right: 1.2rem;
+}
+
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzg0IDUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTkyIDM4NGMtOC4xODggMC0xNi4zOC0zLjEyNS0yMi42Mi05LjM3NWwtMTYwLTE2MGMtMTIuNS0xMi41LTEyLjUtMzIuNzUgMC00NS4yNXMzMi43NS0xMi41IDQ1LjI1IDBMMTkyIDMwNi44bDEzNy40LTEzNy40YzEyLjUtMTIuNSAzMi43NS0xMi41IDQ1LjI1IDBzMTIuNSAzMi43NSAwIDQ1LjI1bC0xNjAgMTYwQzIwOC40IDM4MC45IDIwMC4yIDM4NCAxOTIgMzg0eiIgZmlsbD0iIzM4YTFmZiIgY2xhc3M9ImZpbGwtMDAwMDAwIj48L3BhdGg+PC9zdmc+");
+  background-size: 0.8rem;
+  background-position: calc(100% - 2rem) center;
+  background-repeat: no-repeat;
+  border: none;
+  border-radius: 0.3rem;
+  width: 100%;
+  height: 2.5rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  outline: 0;
+  color: #38a1ff;
+  background-color: rgba(198, 227, 255, 0.5);
 }
 
 ul {
@@ -204,7 +231,7 @@ li {
 
   .right-side {
     width: 50%;
-    margin-left: 2rem;
+    margin-left: 5rem;
   }
 
   h1 {

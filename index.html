@@ -33,10 +33,16 @@
         </input>
         </div>
         <div class="btn-holder">
-          <button class="all-btn">All</button>
-          <button class="done-btn">Done</button>
-          <button class="undone-btn">Undone</button>
-          <button class="clear-btn">Clear</button>
+          <div class="select">
+            <select name="todos" id="filter" >
+            <option value="1" class="all">All</option>
+            <option value="2" class="done">Done</option>
+            <option value="3" class="all">Undone</option>
+          <!-- <button class="all-btn">All <i class="fa-solid fa-angle-down"></i></button>
+          <button class="clear-btn">Clear <i class="fa-solid fa-eraser"></i></button> -->
+        </select>
+        </div>
+        <button class="clear-btn">Clear <i class="fa-solid fa-eraser"></i></button>
         </div>
         <ul>
         <div class="list-holder">

@@ -81,3 +81,11 @@ function clear() {
   toDoListHolder.remove();
   localStorage.clear();
 }
+
+const doneBtn = document.querySelector(".done-btn");
+doneBtn.addEventListener("click", filterDone);
+
+function filterDone() {
+   console.log("ok");
+   
+}
