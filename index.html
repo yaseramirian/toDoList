@@ -28,26 +28,21 @@
       </section>
       <section class="right-side">
        <div class="new">
-           <input type="text" class="new-input" placeholder="Add something"/>
+           <input type="text" class="new-input" placeholder="Add something to do"/>
            <i class="add-btn fa fa-circle-plus" aria-hidden="true"></i>
         </input>
         </div>
-        <div class="btn-holder">
-          <div class="select">
-            <select name="todos" id="filter" >
-            <option value="1" class="all">All</option>
-            <option value="2" class="done">Done</option>
-            <option value="3" class="all">Undone</option>
-          <!-- <button class="all-btn">All <i class="fa-solid fa-angle-down"></i></button>
-          <button class="clear-btn">Clear <i class="fa-solid fa-eraser"></i></button> -->
-        </select>
-        </div>
+        <div class="options-holder">
+          <div class="filter-selector">
+            <select class="filter-todos" >
+            <option value="all">All</option>
+            <option value="done">Done</option>
+            <option value="undone">Undone</option>
+            </select>
+          </div>
         <button class="clear-btn">Clear <i class="fa-solid fa-eraser"></i></button>
         </div>
-        <ul>
-        <div class="list-holder">
-          
-        </div></ul>
+        <ul class="list-holder"></ul>
       </section>
     </div>
     <script src="./script.js"></script>

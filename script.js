@@ -1,91 +1,124 @@
+// selectors
 const toDoInput = document.querySelector(".new-input");
-
-const toDoListHolder = document.querySelector(".list-holder");
-toDoListHolder.addEventListener("click", checkRemove);
-
 const addButton = document.querySelector(".add-btn");
-addButton.addEventListener("click", add);
-
+const toDosList = document.querySelector(".list-holder");
+const filterOption = document.querySelector(".filter-todos");
 const clearButton = document.querySelector(".clear-btn");
+
+// event listeners
+addButton.addEventListener("click", add);
+toDosList.addEventListener("click", checkOrRemove);
+filterOption.addEventListener("change", filter);
 clearButton.addEventListener("click", clear);
+document.addEventListener("DOMContentLoaded", getLocalToDos);
 
-document.addEventListener("DOMContentLoaded", getLocalTodos);
-
+// functions
 function add() {
-  const toDoList = document.createElement("div");
-  const newToDo = `
-  <div class="list">
+  // get input value & create new to do & add to DOM
+  const toDoDiv = document.createElement("div");
+  toDoDiv.classList.add("list");
+
+  const newTodo = `
   <li>${toDoInput.value}</li>
   <i class="check-btn fa fa-circle-check" aria-hidden="true"></i>
   <i class="remove-btn fa fa-trash" aria-hidden="true"></i>
-  </div>
   `;
-  toDoList.innerHTML = newToDo;
-  toDoListHolder.appendChild(toDoList);
-  saveLocalTodos(toDoInput.value);
+  toDoDiv.innerHTML = newTodo;
+
+  // append to list
+  toDosList.appendChild(toDoDiv);
+
+  // save on local storage
+  saveLocalToDos(toDoInput.value);
+
+  // reset input for new value
   toDoInput.value = "";
 }
 
-function checkRemove(e) {
+function checkOrRemove(e) {
   const classList = [...e.target.classList];
   const item = e.target;
-  const todo = item.parentElement;
+  const toDo = item.parentElement;
 
   if (classList[0] === "check-btn") {
-    todo.classList.toggle("completed");
+    toDo.classList.toggle("done");
   } else if (classList[0] === "remove-btn") {
-    removeLocalTodos(todo);
-    todo.remove();
+    removeLocalToDos(toDo);
+    toDo.remove();
   }
 }
 
-function saveLocalTodos(todo) {
-  let savedTodos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
-    : [];
-  savedTodos.push(todo);
-  localStorage.setItem("todos", JSON.stringify(savedTodos));
-}
-
-function getLocalTodos(todo) {
-  let savedTodos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
-    : [];
-
-  savedTodos.forEach((todo) => {
-    const toDoList = document.createElement("div");
-    const newToDo = `
-      <div class="list">
-      <li>${todo}</li>
-      <i class="check-btn fa fa-circle-check" aria-hidden="true"></i>
-      <i class="remove-btn fa fa-trash" aria-hidden="true"></i>
-      </div>
-      `;
-    toDoList.innerHTML = newToDo;
-    toDoListHolder.appendChild(toDoList);
+function filter(e) {
+  toDos = [...toDosList.childNodes];
+  toDos.forEach((toDo) => {
+    switch (e.target.value) {
+      case "all":
+        toDo.style.display = "flex";
+        break;
+      case "done":
+        if (toDo.classList.contains("done")) {
+          toDo.style.display = "flex";
+        } else {
+          toDo.style.display = "none";
+        }
+        break;
+      case "undone":
+        if (!toDo.classList.contains("done")) {
+          toDo.style.display = "flex";
+        } else {
+          toDo.style.display = "none";
+        }
+        break;
+    }
   });
 }
 
-function removeLocalTodos(todo) {
-  let savedTodos = localStorage.getItem("todos")
-    ? JSON.parse(localStorage.getItem("todos"))
+function saveLocalToDos(toDo) {
+  // save on local storage
+  let savedToDos = localStorage.getItem("toDos")
+    ? JSON.parse(localStorage.getItem("toDos"))
     : [];
 
-  const filteredTodos = savedTodos.filter(
-    (t) => t !== todo.children[0].innerText
+  savedToDos.push(toDo);
+  localStorage.setItem("toDos", JSON.stringify(savedToDos));
+}
+
+function getLocalToDos() {
+  // show items that saved on local storage
+  let savedToDos = localStorage.getItem("toDos")
+    ? JSON.parse(localStorage.getItem("toDos"))
+    : [];
+
+  savedToDos.forEach((toDo) => {
+    const toDoDiv = document.createElement("div");
+    toDoDiv.classList.add("list");
+
+    const newTodo = `
+    <li>${toDo}</li>
+    <i class="check-btn fa fa-circle-check" aria-hidden="true"></i>
+    <i class="remove-btn fa fa-trash" aria-hidden="true"></i>
+    `;
+    toDoDiv.innerHTML = newTodo;
+
+    toDosList.appendChild(toDoDiv);
+  });
+}
+
+function removeLocalToDos(toDo) {
+  // remove items from local storage
+  let savedToDos = localStorage.getItem("toDos")
+    ? JSON.parse(localStorage.getItem("toDos"))
+    : [];
+
+  const removedToDos = savedToDos.filter(
+    (t) => t !== toDo.children[0].innerText
   );
-  localStorage.setItem("todos", JSON.stringify(filteredTodos));
+  localStorage.setItem("toDos", JSON.stringify(removedToDos));
 }
 
 function clear() {
-  toDoListHolder.remove();
+  // clear items from list & local storage
+  toDosList.remove();
   localStorage.clear();
-}
-
-const doneBtn = document.querySelector(".done-btn");
-doneBtn.addEventListener("click", filterDone);
-
-function filterDone() {
-   console.log("ok");
-   
+  location.reload(true); // refresh page to be ready for new items
 }
